@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import { addNewPostApiHandle, getBlogs } from '../service/aposAction';
+import { addNewPostApiHandle, deletePostApiHandle, getBlogs } from '../service/aposAction';
 import HeroSection from './Header';
 import { RiDeleteBin7Line } from "react-icons/ri";
 
@@ -39,8 +39,13 @@ const AdminDashboard = () => {
     },
   ]);
 
-  const handleDelete = (id) => {
-    console.log('Delete clicked:', id);
+  const handleDelete = async (id) => {
+    //console.log('Delete clicked:', id);
+    const res = await deletePostApiHandle(id)
+    console.log(res);
+    fetchBlogs()
+    
+
     // Handle delete logic here
   };
 

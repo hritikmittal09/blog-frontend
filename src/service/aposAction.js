@@ -65,3 +65,17 @@ export const addNewPostApiHandle = async (data)=>{
     
 
 }
+export const deletePostApiHandle =  async(id) =>{
+   try {
+     const url = `${BAse_url}/admin/data/${id}`
+     const res = await axios.delete(url)
+     return res.data
+   } catch (error) {
+
+    console.log("error");
+    
+    
+   }
+
+
+}
