@@ -33,3 +33,35 @@ export const LoginApiHandle =  async(email,password,name)=>{
    }
 
 }
+export const addNewPostApiHandle = async (data)=>{
+   // console.log(data);
+    const token =localStorage.getItem("auth")
+    console.log(data);
+    
+    //console.log(data.title, data.,data.image);
+    
+
+    const formdata = new FormData()
+   try {
+     formdata.append("title",data.title)
+     formdata.append("comment",data.content)
+     formdata.append("file", data.image)
+     let url =`${BAse_url}/admin/data`
+     const res = await axios.post(url,formdata,{
+         headers :{
+             "auth" : token,
+             'Content-Type': 'multipart/form-data'
+ 
+         }
+     })
+     return res.data
+   } catch (error) {
+    
+    console.log(error);
+    
+   }
+    
+    
+    
+
+}

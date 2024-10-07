@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import { getBlogs } from '../service/aposAction';
+import { addNewPostApiHandle, getBlogs } from '../service/aposAction';
 import HeroSection from './Header';
 import { RiDeleteBin7Line } from "react-icons/ri";
 
@@ -56,12 +56,17 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleSavePost = () => {
+  const handleSavePost = async() => {
+    const res = await addNewPostApiHandle(newPost)
+    console.log(res);
+    
+    
     // Implement logic to save the post (API call)
-    console.log(newPost);
+    //console.log(newPost);
     setIsModalOpen(false); // Close modal after saving
     setNewPost({ title: '', content: '', image: null });
     setImagePreview(null); // Reset preview
+    fetchBlogs()
   };
 
   return (
@@ -102,7 +107,7 @@ const AdminDashboard = () => {
                 type="text"
                 value={newPost.title}
                 onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
-                className="w-full p-2 border border-gray-300 rounded-lg"
+                className="w-full p-2 border text-black border-gray-300 rounded-lg"
               />
             </div>
             <div className="mb-4">
@@ -110,7 +115,7 @@ const AdminDashboard = () => {
               <textarea
                 value={newPost.content}
                 onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
-                className="w-full p-2 border border-gray-300 rounded-lg"
+                className="w-full p-2 border border-gray-300 rounded-lg text-black"
                 rows="4"
               ></textarea>
             </div>
