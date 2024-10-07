@@ -8,6 +8,7 @@ import 'ag-grid-community/styles/ag-grid.css'; // Base styles
 import 'ag-grid-community/styles/ag-theme-alpine.css'; // Alpine theme styles
 import { getBlogs } from '../service/aposAction';
 import HeroSection from './Header';
+import { RiDeleteBin7Line } from "react-icons/ri";
 
 
 const AdminDashboard = () => {
@@ -38,28 +39,29 @@ const AdminDashboard = () => {
 
  
 
-  const [columnDefs] = useState([
+  
+      const [columnDefs] = useState([
+        { headerName: 'Title', field: 'title' },
+        { headerName: 'Post content', field: 'comment' },
+        { headerName: 'Image Url', field: 'Image' },
+        {
+          headerName: 'Action',
+          cellRenderer: (params) => (
+            <button
+              onClick={() => handleDelete(params.data._id)}
+            
+            >
+            <RiDeleteBin7Line className=' text-2xl'/>
+            </button>
+          ),
+        },
+      ]);
     
-    { headerName: 'Title', field: 'title' },
-    { headerName: 'Post content', field: 'comment' },
-    
-    {
-      headerName: 'Action',
-      field: 'action',
-      cellRendererFramework: (params) => (
-        <button
-          onClick={() => handleDelete(params.data.id)}
-          className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-        >
-          Delete
-        </button>
-      ),
-    }
-  ]);
-
   const handleDelete = (id) => {
-    const newRowData = rowData.filter((row) => row.id !== id);
-    setRowData(newRowData);
+    console.log('delete is clickd' , id );
+    
+    //const newRowData = rowData.filter((row) => row.id !== id);
+    //setRowData(newRowData);
   };
 
   const handleAddPost = () => {
