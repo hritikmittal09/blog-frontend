@@ -1,8 +1,3 @@
-# React + Vite
+I developed a blog website using the MERN stack, focused on sharing coding research and insights. The platform integrates custom APIs, though there is some delay in response time due to deployment on a free Render instance. Despite this, the website remains a valuable resource for documenting and sharing technical content. The site is live and showcases a variety of coding-related topics.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![image](https://github.com/user-attachments/assets/a6ffe08f-9b1f-44f0-9b49-81661041df64)
